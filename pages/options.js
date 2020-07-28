@@ -154,6 +154,7 @@ port.onMessage.addListener(function(response) {
       }
     });
   }
+  return true;
 });
 
 PORT('getSettings');

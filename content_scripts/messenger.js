@@ -1,13 +1,14 @@
 var port = chrome.extension.connect({name: 'main'});
 port.onDisconnect.addListener(function() {
   window.portDestroyed = true;
-  chrome.runtime.sendMessage = function() {};
+  chrome.runtime.sendMessage = function() { return true};
   chrome.runtime.connect = function() {};
   Command.hide();
   removeListeners();
   Visual.exit();
   Find.clear();
   Command.destroy();
+  return true
 });
 
 (function() {
@@ -162,6 +163,7 @@ port.onMessage.addListener(function(response) {
     }
     break;
   }
+  return true;
 });
 
 chrome.extension.onMessage.addListener(function(request, sender, callback) {
@@ -324,4 +326,5 @@ chrome.extension.onMessage.addListener(function(request, sender, callback) {
     callback(e.innerWidth > 5 && e.innerHeight > 5);
     break;
   }
+  return true
 });

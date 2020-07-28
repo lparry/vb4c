@@ -10,6 +10,7 @@ port.onMessage.addListener(function(data) {
     blacklist.textContent = 'Enable vb4c on this domain';
     isBlacklisted = true;
   }
+  return true
 });
 port.postMessage({action: 'getBlacklisted'});
 
@@ -20,6 +21,7 @@ chrome.runtime.sendMessage({action: 'getActiveState'}, function(response) {
   } else {
     pause.textContent = 'Enable vb4c';
   }
+  return true
 });
 
 settings.addEventListener('click', function() {
@@ -28,6 +30,7 @@ settings.addEventListener('click', function() {
     active: true,
     url: chrome.extension.getURL('/pages/options.html')
   });
+  return true
 }, false);
 
 pause.addEventListener('click', function() {

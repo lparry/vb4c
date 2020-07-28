@@ -115,6 +115,7 @@ chrome.runtime.onConnect.addListener(function(port) {
           sender: request.sender
         });
       }
+      return true;
     });
   }
 });
@@ -130,5 +131,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, callback) {
       request: request,
       sender: sender
     });
+    return true
   }
 });
